@@ -5,7 +5,7 @@ def test_user_login(client, register):
         '/api/v1/user/login',
         json={'email': 'test@example.com', 'password': '0123456789'})
     ret = rv.get_json()
-    assert ret['code'] == 'SUCCESS'
+    assert ret['err'] == 'SUCCESS'
 
 
 def test_user_data(client, register):
