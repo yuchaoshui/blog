@@ -3,17 +3,25 @@ just a blog. but beautiful.
 
 
 # Installation
-take a look at the manage.py file, and you will know all.
+take a look at the manager.py file, Makefile, Procfile you will know it.
 you can use your own way to run it, such as supervisro, uwsgi, gunicorn.
 ```
+mkvirtualenv blog-venv
 git clone https://github.com/yuchaoshui/blog
 cd blog
-pip install -r requirements.txt
+make install-deps
+make dist
+```
+use virtualenvwrapper to make a virtual env, then install dependency， then
+make a python whl package like this `blog-0.0.1-py3-none-any.whl`. you can
+install it use pip tool, `pip install blog-0.0.1-py3-none-any.whl`
+
+# Commands
+```
 blog --help
 ```
 
-
-# generate rsa private key and public key
+# Generate rsa private key and public key
 ```
 openssl genrsa -out auth.pem 512
 openssl rsa -in auth.pem -pubout -out auth.pub
@@ -26,7 +34,7 @@ openssl rsa -in auth.pem -out auth.pub -pubout
 then overwrite two files in settings directory.
 
 
-# development
+# Development
 copy settings/default_settings.py to project root directory, rename it to .settings.py,
 and you can overwrite default settings.
 
