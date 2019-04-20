@@ -13,6 +13,8 @@ help:
 	@echo "    test program."
 	@echo "make dist:"
 	@echo "    make a wheel package."
+	@echo "make init-db:"
+	@echo "    initial tables"
 
 compile-deps:
 	@[ -n "$(VIRTUAL_ENV)" ] || (echo 'out of virtualenv'; exit 1)
@@ -27,7 +29,7 @@ install-deps:
 	@pip3 install -r requirements-dev.txt
 
 clean:
-	@rm -rf dist build
+	@rm -rf dist build blog.egg-info htmlcov .pytest_cache
 	@find . -name '__pycache__' | xargs rm -rf
 	@find . -name '*.pyc' -or -name '*.pyo' -delete
 
@@ -42,8 +44,12 @@ test:
 	coverage run -m pytest blog/tests/weblog -p no:warnings
 	coverage report --omit=*tests* --include=blog*
 	coverage html --omit=*tests* --include=blog*
+	@rm -rf .pytest_cache
 
 dist: clean
 	@[ -n "$(VIRTUAL_ENV)" ] || (echo 'out of virtualenv'; exit 1)
 	@python3 ./setup.py sdist bdist_wheel
 	@rm -rf build
+
+init-db:
+	@python manager.py init-db

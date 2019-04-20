@@ -29,7 +29,7 @@ def init_db(need_confirm=True):
         confirm = input('Do you wanna procceed? (Y/N) ')
         if confirm.lower().strip() not in ('y', 'yes'):
             sys.stderr.write('Abort!!!\n')
-            sys.exit(1)
+            sys.exit(0)
 
     logger.info(f'start init database.')
     session = rw_session()

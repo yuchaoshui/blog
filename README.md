@@ -13,22 +13,24 @@ blog --help
 ```
 
 
-# generate your key
+# generate rsa private key and public key
 ```
 openssl genrsa -out auth.pem 512
-openssl rsa -in rsa_private_key -pubout -out auth.pub
+openssl rsa -in auth.pem -pubout -out auth.pub
 ```
-or
+or there is another way to generate
 ```
 openssl genpkey -out auth.pem -algorithm rsa -pkeyopt rsa_keygen_bits:512
 openssl rsa -in auth.pem -out auth.pub -pubout
 ```
-then overwrite two files in config directory.
+then overwrite two files in settings directory.
 
 
 # development
-copy config/default_config.py to root directory, rename it to .config.py,
+copy settings/default_settings.py to root directory, rename it to .settings.py,
 and you can overwrite default settings.
 
-`make dist` to make a package, `honcho start` to start server locally.
+`make dist` to make a package,
+`honcho start` to start server locally.
 `make compile-deps` to generate requirements.txt use requirements.in
+more details please read the Makefile.

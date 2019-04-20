@@ -25,14 +25,14 @@ setup(
     url='https://github.com/yuchaoshui/blog',
     packages=find_packages(),
     package_data={'blog.settings': ['auth.*'], 'blog.migrations': ['*.sql']},
-    py_modules=['blog_manager'],
+    py_modules=['manager'],
     data_files=[('settings', ['blog/settings/default_settings.py',
                               'blog/settings/auth.pem',
                               'blog/settings/auth.pub'])],
     install_requires=parse_requirements('requirements.txt'),
     entry_points={
         'console_scripts': [
-            'blog = blog_manager:cli',
+            'blog = manager:cli',
         ],
     },
 )
