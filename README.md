@@ -27,7 +27,7 @@ then overwrite two files in settings directory.
 
 
 # development
-copy settings/default_settings.py to root directory, rename it to .settings.py,
+copy settings/default_settings.py to project root directory, rename it to .settings.py,
 and you can overwrite default settings.
 
 `make dist` to make a package,
