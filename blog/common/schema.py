@@ -54,12 +54,12 @@ def schema(func=None, query=None, form=None, json=None, reply=None):
 
         ret_val = func(*args, **kwargs)
         ret_val = {} if ret_val is None else ret_val
-        code = ret_val.get('code', ErrorCode.SUCCESS.name)
+        err = ret_val.get('err', ErrorCode.SUCCESS.name)
         msg = ret_val.get('msg', '')
         data = ret_val.get('data', None)
         if reply is not None and isinstance(reply, Schema):
             data = reply.dump(ret_val.get('data')).data
 
-        return jsonify(dict(code=code, msg=msg, data=data))
+        return jsonify(dict(err=err, msg=msg, data=data))
 
     return wrapper
