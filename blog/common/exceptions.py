@@ -26,6 +26,8 @@ class ErrorCode(Enum):
     USER_NOT_FOUND = 25                      # 用户不存在
     PASSWORD_ERROR = 26                      # 登录密码错误
     PAGE_NOT_FOUND = 27                      # 页面找不到
+    CONTENT_TYPE_ERROR = 28                  # 请求类型错误
+    CONTENT_FORMAT_ERROR = 29                # 请求内容格式错误
 
 
 def handle_exception(error):

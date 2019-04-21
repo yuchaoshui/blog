@@ -32,13 +32,13 @@ def schema(func=None, query=None, form=None, json=None, reply=None):
     def load_json(s):
         content_type = request.headers.get('Content-Type')
         if not content_type or not content_type.startswith('application/json'):
-            raise ClientError(code=401, err=ErrorCode.NEED_LOGIN,
+            raise ClientError(code=400, err=ErrorCode.CONTENT_TYPE_ERROR,
                               msg='invalid content-type')
         try:
             data = ujson.loads(request.data)
         except Exception as e:
             logger.exception(e)
-            raise ClientError(code=401, err=ErrorCode.NEED_LOGIN,
+            raise ClientError(code=400, err=ErrorCode.CONTENT_FORMAT_ERROR,
                               msg='invalid content format')
         return try_load(s, data)
 
