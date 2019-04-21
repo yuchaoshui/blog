@@ -29,14 +29,14 @@ class ErrorCode(Enum):
 
 
 def handle_exception(error):
-    response = dict(code=ErrorCode.EXCEPTION.name,
+    response = dict(err=ErrorCode.EXCEPTION.name,
                     msg='Internal Exception', data=None)
     logger.exception(error)
     return jsonify(response), 500
 
 
 def handle_not_found(error):
-    response = dict(code=ErrorCode.PAGE_NOT_FOUND.name,
+    response = dict(err=ErrorCode.PAGE_NOT_FOUND.name,
                     msg='URL not found', data=None)
     logger.exception(error)
     return jsonify(response), 404
