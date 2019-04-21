@@ -6,7 +6,7 @@ CREATE TABLE `users` (
   COMMENT '用户注册邮箱',
   `description` VARCHAR(255) NOT NULL DEFAULT ''
   COMMENT '用户描述',
-  `about_me`    TEXT NOT NULL DEFAULT ''
+  `about_me`    TEXT NOT NULL
   COMMENT '个人详细介绍',
   `remark`    VARCHAR(255) NOT NULL DEFAULT ''
   COMMENT '备注',
